@@ -29,11 +29,12 @@ const textAreaInput = async function(page,label,value){
 }
 
 const lookUpAndPickListSelect = async function(page,label,value,isLookup){
-    await page.click("//label[text()='"+label+"']/..//input");
     if(isLookup){
+        await page.click("//label[text()='"+label+"']/..//input");
         await page.type("//label[text()='"+label+"']/..//input",value);
         await page.click("//label[text()='"+label+"']/..//lightning-base-combobox-formatted-text[@title='"+value+"']");    
     }else{
+        await page.click("//label[text()='"+label+"']/..//lightning-base-combobox");
         await page.click("//label[text()='"+label+"']/..//lightning-base-combobox-item[@data-value='"+value+"']");
 
     }
